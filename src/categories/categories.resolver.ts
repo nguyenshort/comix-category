@@ -1,4 +1,4 @@
-import { Args, Context, Info, Mutation, Query, Resolver } from "@nestjs/graphql";
+import { Args, Context, Info, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { InputValidator } from '@shared/validator/input.validator'
 import { CategoriesService } from './categories.service'
 import { Category } from './entities/category.entity'
@@ -24,8 +24,6 @@ export class CategoriesResolver {
     @Info() info: any,
     @Context() context: any
   ) {
-    console.log(info)
-    console.log(context)
     this.client.send('auth', {}).subscribe(console.log)
     return this.categoriesService.upsert(input.name, input.content)
   }

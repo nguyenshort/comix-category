@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Document } from 'mongoose'
-import { Field, ID, ObjectType } from '@nestjs/graphql'
+import { Field, ID, ObjectType, ResolveReference } from '@nestjs/graphql'
+import { ShareableDirective } from '@apollo/subgraph/dist/directives'
 
 export type CategoryDocument = Category & Document
 
@@ -10,7 +11,7 @@ export class Category {
   @Field(() => ID)
   id: string
 
-  @Field()
+  @Field({ description: 'Tên thể loại' })
   @Prop({ required: true, lowercase: true, trim: true })
   name: string
 

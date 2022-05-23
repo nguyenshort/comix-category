@@ -26,8 +26,22 @@
       ],
       "@shared/*": [
         "src/shared/*"
+      ],
+      "y/comix/auth": [
+        "libs/comix/auth/src"
+      ],
+      "y/comix/auth/*": [
+        "libs/comix/auth/src/*"
+      ],
+      "@app/auth": [
+        "libs/auth/src"
+      ],
+      "@app/auth/*": [
+        "libs/auth/src/*"
       ]
     }
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }
