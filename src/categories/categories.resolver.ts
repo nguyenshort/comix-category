@@ -5,7 +5,7 @@ import { Category } from './entities/category.entity'
 import { CreateCategoryInput } from './dto/create-category.input'
 import { ClientProxy } from '@nestjs/microservices'
 import { Inject, UseGuards } from '@nestjs/common'
-import { CurrentUser, JWTAuthGuard, OptionAuthGuard } from "@comico/auth";
+import { CurrentUser, JWTAuthGuard, OptionAuthGuard } from '@comico/auth'
 
 @Resolver(() => Category)
 export class CategoriesResolver {
@@ -22,11 +22,13 @@ export class CategoriesResolver {
   @Mutation(() => Category)
   @UseGuards(JWTAuthGuard)
   async categoryUpsert(
-    @Args('input', new InputValidator()) input: CreateCategoryInput,
-    @Info() info: any,
-    @Context() context: any,
-    @CurrentUser() user
+    @Args('input', new InputValidator()) input: CreateCategoryInput
   ) {
     return this.categoriesService.upsert(input.name, input.content)
+  }
+
+  @Mutation(() => [Category], { name: 'categories' })
+  async getCategories() {
+    return this.categoriesService.findMany({})
   }
 }
