@@ -1,14 +1,11 @@
-import { Controller, Inject } from '@nestjs/common'
-import { ClientProxy, MessagePattern, Payload } from '@nestjs/microservices'
+import { Controller } from '@nestjs/common'
+import { MessagePattern, Payload } from '@nestjs/microservices'
 import { CategoriesService } from './categories.service'
 import { CreateCategoryInput } from './dto/create-category.input'
 
 @Controller()
 export class CategoriesController {
-  constructor(
-    private readonly categoriesService: CategoriesService,
-    @Inject('AUTH_SERVICE') private client: ClientProxy
-  ) {}
+  constructor(private readonly categoriesService: CategoriesService) {}
 
   @MessagePattern('createJjj')
   create(@Payload() createJjjDto: CreateCategoryInput) {
