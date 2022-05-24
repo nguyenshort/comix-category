@@ -1,16 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { Document } from 'mongoose'
-import { Field, ID, ObjectType, ResolveReference } from '@nestjs/graphql'
-import { ShareableDirective } from '@apollo/subgraph/dist/directives'
+import { Field, ID, ObjectType } from '@nestjs/graphql'
+import { CoreModel } from '@comico/core'
 
 export type CategoryDocument = Category & Document
 
 @ObjectType()
 @Schema()
-export class Category {
-  @Field(() => ID)
-  id: string
-
+export class Category extends CoreModel {
   @Field({ description: 'Tên thể loại' })
   @Prop({ required: true, lowercase: true, trim: true })
   name: string

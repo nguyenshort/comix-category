@@ -5,6 +5,7 @@ import { Category } from './entities/category.entity'
 import { CreateCategoryInput } from './dto/create-category.input'
 import { UseGuards } from '@nestjs/common'
 import { JWTAuthGuard } from '@comico/auth'
+import { NotFoundError } from '@comico/core'
 
 @Resolver(() => Category)
 export class CategoriesResolver {
@@ -12,7 +13,7 @@ export class CategoriesResolver {
 
   @Query(() => [Category])
   async categories() {
-    return await this.categoriesService.findMany({})
+    return await this.categoriesService.findAll({})
   }
 
   @Mutation(() => Category)
@@ -23,11 +24,6 @@ export class CategoriesResolver {
     return this.categoriesService.upsert(input.name, input.content)
   }
 
-  @Mutation(() => [Category], { name: 'categories' })
-  async getCategories() {
-    return this.categoriesService.findMany({})
-  }
-
   @Mutation(() => Category)
   @UseGuards(JWTAuthGuard)
   async categoryUpdate(
@@ -36,7 +32,7 @@ export class CategoriesResolver {
   ) {
     const _category = await this.categoriesService.findOne({ slug: category })
     if (!_category) {
-      //Todo: throw 404
+      throw new NotFoundError('category not found')
     }
     return this.categoriesService.update(_category, input)
   }
@@ -48,8 +44,8 @@ export class CategoriesResolver {
   ) {
     const _category = await this.categoriesService.findOne({ slug: category })
     if (!_category) {
-      //Todo: throw 404
+      throw new NotFoundError('category not found')
     }
-    return this.categoriesService.remove(_category)
+    return this.categoriesService.destroy(_category)
   }
 }

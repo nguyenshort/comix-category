@@ -1,17 +1,15 @@
 import { Injectable } from '@nestjs/common'
-import { CreateCategoryInput } from './dto/create-category.input'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 import { Category, CategoryDocument } from './entities/category.entity'
+import { CoreService } from '@comico/core'
 
 @Injectable()
-export class CategoriesService {
+export class CategoriesService extends CoreService<Category> {
   constructor(
     @InjectModel(Category.name) private categoryModel: Model<CategoryDocument>
-  ) {}
-
-  async create(input: CreateCategoryInput) {
-    return this.categoryModel.create(input)
+  ) {
+    super(categoryModel)
   }
 
   async upsert(name: string, content = '') {
@@ -22,29 +20,5 @@ export class CategoriesService {
       return category
     }
     return this.create({ name, content })
-  }
-
-  async findMany(filter: object) {
-    return this.categoryModel.find(filter)
-  }
-
-  async findAll() {
-    return this.categoryModel.find()
-  }
-
-  async findOne(filter: object) {
-    return this.categoryModel.findOne(filter)
-  }
-
-  async update(category: CategoryDocument, doc: CreateCategoryInput) {
-    return this.categoryModel.findByIdAndUpdate(
-      category._id,
-      { ...doc },
-      { returnOriginal: false }
-    )
-  }
-
-  async remove(category: CategoryDocument) {
-    return this.categoryModel.findByIdAndDelete(category._id)
   }
 }
