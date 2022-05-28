@@ -7,7 +7,7 @@ import { CoreService } from '@comico/core'
 @Injectable()
 export class CategoriesService extends CoreService<Category> {
   constructor(
-    @InjectModel(Category.name) private categoryModel: Model<CategoryDocument>
+    @InjectModel(Category.name) readonly categoryModel: Model<CategoryDocument>
   ) {
     super(categoryModel)
   }

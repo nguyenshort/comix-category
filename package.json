@@ -1,6 +1,6 @@
 {
   "name": "@comico/categories",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "",
   "author": "Yuan",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "type": "git",
     "url": "https://github.com/comix-framework/comix-core"
   },
-  "dependencies": {
+  "devDependencies": {
     "@apollo/subgraph": "^2.0.3",
     "@comico/auth": "^0.1.0",
     "@comico/core": "^0.1.1",
@@ -47,9 +47,8 @@
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
-  },
-  "devDependencies": {
+    "rxjs": "^7.2.0",
+
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",

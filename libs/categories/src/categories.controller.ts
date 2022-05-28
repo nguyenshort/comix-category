@@ -5,7 +5,7 @@ import { CreateCategoryInput } from '@app/categories/dto'
 
 @Controller()
 export class CategoriesController {
-  constructor(private readonly categoriesService: CategoriesService) {}
+  constructor(readonly categoriesService: CategoriesService) {}
 
   @MessagePattern('createJjj')
   create(@Payload() createJjjDto: CreateCategoryInput) {

@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { Category, CategoryEntity } from '@app/categories/entities'
 import { CategoriesController } from './categories.controller'
 
-const CATEGORY_CONNECT = MongooseModule.forFeatureAsync([
+export const CATEGORY_CONNECT = MongooseModule.forFeatureAsync([
   {
     name: Category.name,
     useFactory: () => {

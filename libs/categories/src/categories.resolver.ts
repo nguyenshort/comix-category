@@ -8,7 +8,7 @@ import { InputValidator, NotFoundError } from '@comico/core'
 
 @Resolver(() => Category)
 export class CategoriesResolver {
-  constructor(private readonly categoriesService: CategoriesService) {}
+  constructor(readonly categoriesService: CategoriesService) {}
 
   @Query(() => [Category])
   async categories() {
