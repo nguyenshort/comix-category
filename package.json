@@ -1,22 +1,24 @@
 {
-  "name": "comix-microserver-started",
+  "name": "@comico/categories",
   "version": "0.0.1",
   "description": "",
-  "author": "",
-  "private": true,
-  "license": "UNLICENSED",
+  "author": "Yuan",
+  "license": "MIT",
+  "main": "dist/libs/categories/index.js",
   "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nest build categories --tsc",
+    "dev": "nest start --tsc --watch",
     "start": "nest start",
-    "dev": "nest start --watch",
-    "start:prod": "node dist/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "start:prod": "node dist/main"
+  },
+  "keywords": [
+    "comix",
+    "common",
+    "nestjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/comix-framework/comix-core"
   },
   "dependencies": {
     "@apollo/subgraph": "^2.0.3",

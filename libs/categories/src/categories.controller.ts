@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common'
 import { MessagePattern, Payload } from '@nestjs/microservices'
 import { CategoriesService } from './categories.service'
-import { CreateCategoryInput } from './dto/create-category.input'
+import { CreateCategoryInput } from '@app/categories/dto'
 
 @Controller()
 export class CategoriesController {
