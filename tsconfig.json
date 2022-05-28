@@ -24,20 +24,11 @@
       "@database/*": [
         "src/database/*"
       ],
-      "@shared/*": [
-        "src/shared/*"
+      "@app/categories": [
+        "libs/categories/src"
       ],
-      "y/comix/auth": [
-        "libs/comix/auth/src"
-      ],
-      "y/comix/auth/*": [
-        "libs/comix/auth/src/*"
-      ],
-      "@app/auth": [
-        "libs/auth/src"
-      ],
-      "@app/auth/*": [
-        "libs/auth/src/*"
+      "@app/categories/*": [
+        "libs/categories/src/*"
       ]
     }
   },

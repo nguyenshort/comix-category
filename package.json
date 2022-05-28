@@ -93,7 +93,8 @@
     ],
     "moduleNameMapper": {
       "^y/comix/auth(|/.*)$": "<rootDir>/libs/comix/auth/src/$1",
-      "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1"
+      "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1",
+      "^@app/categories(|/.*)$": "<rootDir>/libs/categories/src/$1"
     }
   }
 }

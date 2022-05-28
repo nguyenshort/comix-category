@@ -3,22 +3,13 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "projects": {
-    "comix/auth": {
+    "categories": {
       "type": "library",
-      "root": "libs/comix/auth",
+      "root": "libs/categories",
       "entryFile": "index",
-      "sourceRoot": "libs/comix/auth/src",
+      "sourceRoot": "libs/categories/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/comix/auth/tsconfig.lib.json"
-      }
-    },
-    "auth": {
-      "type": "library",
-      "root": "libs/auth",
-      "entryFile": "index",
-      "sourceRoot": "libs/auth/src",
-      "compilerOptions": {
-        "tsConfigPath": "libs/auth/tsconfig.lib.json"
+        "tsConfigPath": "libs/categories/tsconfig.lib.json"
       }
     }
   },

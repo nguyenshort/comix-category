@@ -1,11 +1,10 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
-import { InputValidator } from '@shared/validator/input.validator'
 import { CategoriesService } from './categories.service'
-import { Category } from './entities/category.entity'
-import { CreateCategoryInput } from './dto/create-category.input'
+import { Category } from '@app/categories/entities'
+import { CreateCategoryInput } from '@app/categories/dto'
 import { UseGuards } from '@nestjs/common'
 import { JWTAuthGuard } from '@comico/auth'
-import { NotFoundError } from '@comico/core'
+import { InputValidator, NotFoundError } from '@comico/core'
 
 @Resolver(() => Category)
 export class CategoriesResolver {
@@ -13,12 +12,12 @@ export class CategoriesResolver {
 
   @Query(() => [Category])
   async categories() {
-    return await this.categoriesService.findAll({})
+    return this.categoriesService.findAll({})
   }
 
   @Mutation(() => Category)
   @UseGuards(JWTAuthGuard)
-  async categoryUpsert(
+  async upsertCategories(
     @Args('input', new InputValidator()) input: CreateCategoryInput
   ) {
     return this.categoriesService.upsert(input.name, input.content)
@@ -26,20 +25,20 @@ export class CategoriesResolver {
 
   @Mutation(() => Category)
   @UseGuards(JWTAuthGuard)
-  async categoryUpdate(
+  async updateCategory(
     @Args('input', new InputValidator()) input: CreateCategoryInput,
     @Args('category', { type: () => String }) category: string
   ) {
     const _category = await this.categoriesService.findOne({ slug: category })
     if (!_category) {
-      throw new NotFoundError('category not found')
+      throw new NotFoundError('Category not found')
     }
     return this.categoriesService.update(_category, input)
   }
 
   @Mutation(() => Category)
   @UseGuards(JWTAuthGuard)
-  async categoryRemove(
+  async removeCategory(
     @Args('category', { type: () => String }) category: string
   ) {
     const _category = await this.categoriesService.findOne({ slug: category })

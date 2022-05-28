@@ -4,8 +4,8 @@ import { AppService } from './app.service'
 import { ApolloModule } from '@apollo/apollo.module'
 import { DatabaseModule } from '@database/database.module'
 import { ConfigModule } from '@nestjs/config'
-import { CategoriesModule } from './categories/categories.module'
 import { AuthModule } from '@comico/auth'
+import { CategoriesModule } from '@app/categories'
 
 @Module({
   imports: [

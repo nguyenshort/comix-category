@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
-import { Category, CategoryDocument } from './entities/category.entity'
+import { Category, CategoryDocument } from '@app/categories/entities'
 import { CoreService } from '@comico/core'
 
 @Injectable()
